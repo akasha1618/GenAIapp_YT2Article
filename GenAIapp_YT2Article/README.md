@@ -40,7 +40,7 @@ Replace `your_openai_api_key` with your actual OpenAI API key.
 - OpenAI Whisper API
 - LangChain
 - pytube
-- OpenAI gpt-4=turbo
+- OpenAI gpt-4-turbo
 
 ## Contributing
 
