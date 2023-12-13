@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube to Article AI Writer</title>
+    <style>
+     body {
+         font-family: 'Roboto', sans-serif;
+         background: linear-gradient(to right, #1a2a6c, #b21f1f, #fdbb2d);
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         height: 100vh;
+         margin: 0;
+     }
+     
+     h1 {
+         color: #ffffff;
+         font-size: 2.5em;
+         text-align: center;
+     }
+     
+     .container {
+         text-align: center;
+     }
+     
+     input[type="text"] {
+         width: 333px;
+         padding: 12px 20px;
+         margin: 10px 0;
+         border: 2px solid #ffffff;
+         border-radius: 22px;
+         background-color: #ffffff;
+         font-size: 1.2em;
+     }
+     
+     #generate-article-btn {
+         display: block;
+         padding: 10px 20px;
+         font-size: 1.2em;
+         color: #CA5023;
+         background-color: #000000;
+         border: none;
+         border-radius: 50px;
+         cursor: pointer;
+         transition: background-color 0.3s ease;
+         width: 250px;  /* Set a specific width */
+         margin: 10px auto;  /* Center the button */
+     }
+     
+     #generate-article-btn:hover {
+         background-color: #F6F6F6;
+     }
+     
+        @keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+        @keyframes loading {
+            0% { opacity: 0; }
+            50% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+
+        .loading {
+            margin-bottom: 22px;
+            font-family: 'Consolas', monospace;  
+            font-size: 1.5em;  /* Set the font size */
+            color: #ffffff;  /* Set the font color */  /* Add a text shadow */
+        }
+        #status-text {
+            font-family: 'Courier New', monospace;  /* Set the font family */
+            font-size: 1.2em;  /* Set the font size */
+            color: #ffffff;  /* Set the font color */
+            animation: blink 1s linear infinite;
+        }
+        #status-text, .loading {
+          display: none;
+       }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>YouTube to SEO Article AI Writer</h1>
+        <form action="/generate-article" method="post">
+            <input type="text" id="youtube-link-input" name="youtube_link" placeholder="Enter YouTube Video URL" required>
+            <button id="generate-article-btn" type="submit">Write Article</button>
+        </form>
+        <div class="loading">Loading...</div>
+        <div id="status-text">Downloading video...</div>
+        
+    </div>
+
+<script>
+     let currentStep = 0;
+     const steps = [
+         "Downloading video...",
+         "Extracting the audio...",
+         "Transcribing audio to text...",
+         "Finding relevant keywords...",
+         "Creating the SEO article structure...",
+         "Writing the article...please bear in mind that this may take some minutes..."
+     ];
+ 
+     function updateStatus() {
+         if (currentStep < steps.length) {
+             document.getElementById("status-text").innerText = steps[currentStep];
+             currentStep++;
+             setTimeout(updateStatus, 8888); // Update every 10 seconds
+         }
+     }
+     function startProcess() {
+          
+        const youtubeLink = document.getElementById("youtube-link-input").value.trim();
+
+        if (!youtubeLink) {
+            alert("Please enter a YouTube video URL.");
+            event.preventDefault(); // Prevent form submission
+            return;
+        }
+        document.getElementById("status-text").style.display = 'block';
+        document.querySelector(".loading").style.display = 'block';
+        /* start the sequence */
+        updateStatus();
+     }
+ 
+    document.getElementById("generate-article-btn").addEventListener('click', startProcess);
+
+    
+
+ </script>
+</body>
+</html>

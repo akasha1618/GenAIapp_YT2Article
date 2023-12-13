@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generated Article</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(to right, #1a2a6c, #b21f1f, #fdbb2d);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        h1 {
+            text-align: center;
+            color: #ffffff;
+            font-size: 2.5em;
+        }
+        .article {
+            text-align: left;
+            white-space: pre-line; /* This will respect newlines and spaces from the article text */
+        }
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px 20px;
+            background-color: #000000;
+            color: #CA5023;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            text-align: center;
+            text-decoration: none;
+            display: block;
+            font-size: 1.2em;
+            width: 250px;  /* Set a specific width */
+            margin: 10px auto;  /* Center the button */
+         
+        }
+        .button { 
+            align-items: center;
+            display: block;
+            width: 22%;
+            padding: 10px 20px;
+            background-color: #000000;
+            color: #CA5023;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            text-align: center;
+            text-decoration: none;
+            width: 250px;
+            margin: 10px auto;
+
+        
+        }
+        button:hover {
+            background-color: #F6F6F6;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="/" class="button">Generate New Article</a>
+        <a href="/download-article" class="button">Download Article</a>
+        <h1>Generated SEO Article:</h1>
+    
+        <div class="article">
+            {{ article | safe }}
+        </div>
+        
+    </div>
+</body>
+</html>

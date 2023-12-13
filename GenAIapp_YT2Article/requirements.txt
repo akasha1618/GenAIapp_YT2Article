@@ -1,0 +1,12 @@
+openai
+langchain
+python-dotenv
+yt-dlp
+openai-whisper
+pytube
+pytube moviepy
+flask
+
+
+
+
