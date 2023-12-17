@@ -26,6 +26,8 @@ with open("prompt_article", "r") as file:
 
 app = Flask(__name__)
 
+
+#Downoad the article with Pytube, get the title, audio from the video and use Whisper from OpenAI to get the transcript from the audio
 def download_and_transcribe(url):
 
     yt = YouTube(url)
@@ -39,6 +41,7 @@ def download_and_transcribe(url):
         transcript = client.audio.transcriptions.create(model="whisper-1", file=audio_file)
     return transcript  
 
+#generate the article with Langchain 
 def generate_article_from_transcript(transcript):
     prompt =prompt_article
     llm = ChatOpenAI(temperature=0.0, model='gpt-4-1106-preview')
